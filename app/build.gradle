@@ -1,24 +1,100 @@
 apply plugin: 'com.android.application'
 
+
+// Create a variable called keystorePropertiesFile, and initialize it to your
+// keystore.properties file, in the rootProject folder.
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+
+// Initialize a new Properties() object called keystoreProperties.
+def keystoreProperties = new Properties()
+
+// Load your keystore.properties file into the keystoreProperties object.
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+
 android {
+
+    signingConfigs{
+
+        release{
+            keyAlias keystoreProperties['KEY_ALIAS']
+            keyPassword keystoreProperties['KEY_PASSWORD']
+            storeFile file(keystoreProperties['STORE_FILE'])
+            storePassword keystoreProperties['STORE_PASSWORD']
+        }
+
+        debug{
+            keyAlias keystoreProperties['KEY_ALIAS_DEBUG']
+            keyPassword keystoreProperties['KEY_PASSWORD_DEBUG']
+            storeFile file(keystoreProperties['STORE_FILE_DEBUG'])
+            storePassword keystoreProperties['STORE_PASSWORD_DEBUG']
+        }
+    }
+
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.agarwal.arpit.androidhub"
         minSdkVersion 19
-        targetSdkVersion 28
+        targetSdkVersion 28 // match the compile one
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        flavorDimensions("access")
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+
+    productFlavors{
+        live{
+            // change the name of application according to variants of app //
+            resValue "string", "app_name", "Android Hub"
+        }
+        dev{
+            // dev utilizes minSDKVersion = 21 to allow the Android gradle plugin
+            // to pre-dex each module and produce an APK that can be tested on
+            // Android Lollipop without time consuming dex merging processes.
+            minSdkVersion 21
+            applicationIdSuffix ".dev"
+            resValue "string", "app_name", "Android Hub (Dev)"+versionName
+        }
+        uat{
+            // dev utilizes minSDKVersion = 21 to allow the Android gradle plugin
+            // to pre-dex each module and produce an APK that can be tested on
+            // Android Lollipop without time consuming dex merging processes.
+            minSdkVersion 21
+            applicationIdSuffix ".uat"
+            resValue "string", "app_name", "Android Hub (Uat)"+versionName
         }
     }
+
+    buildTypes {
+
+        release {
+            debuggable false
+            // Resource shrinking is the automatic removal of resources that are unused,
+            // at build time, in the packaged app,
+            // you have to enable minifyEnabled in order to turn on code shrinking.
+            minifyEnabled true // default is false -> code shrinking
+            shrinkResources true //default is false -> resource shrinking
+            // Stops the reverse engineering of your application//
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //signingConfigs signingConfigs.release
+        }
+
+        debug {
+            useProguard false //disables proguard , default is true
+            pseudoLocalesEnabled true // generate pseudo locale
+            debuggable true
+            //signingConfigs signingConfigs.debug
+        }
+    }
+
+    //TODO :: create .apk with names containing flavour,builtType and version name .
 }
 
 dependencies {
+    //tells the build system to include any
+    //JAR files inside the app/libs/ directory in the compilation classpath and in the final package of
+    //your app.
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:28.0.0'
     testImplementation 'junit:junit:4.12'
