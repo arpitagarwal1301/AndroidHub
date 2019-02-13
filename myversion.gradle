@@ -1,0 +1,6 @@
+
+
+def versionProperty = [:]
+versionProperty.versionCode = 1
+versionProperty.versionName = "1.0";
+ext.versionProperty = versionProperty

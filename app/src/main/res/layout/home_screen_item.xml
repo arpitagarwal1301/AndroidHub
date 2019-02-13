@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="homeScreenItemDao"
+            type="com.agarwal.arpit.androidhub.daos.HomeScreenItemDao"/>
+    </data>
+
+    <LinearLayout
+        android:id="@+id/parent_layout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Item_Name"
+            android:text="@{homeScreenItemDao.name}"/>
+
+        <TextView
+            android:id="@+id/item_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Item_Description"
+            android:text="@{homeScreenItemDao.desc}"/>
+
+    </LinearLayout>
+</layout>
