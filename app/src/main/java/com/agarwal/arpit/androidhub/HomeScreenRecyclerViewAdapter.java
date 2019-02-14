@@ -16,27 +16,28 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class HomeScreenRecyclerViewAdapter extends RecyclerView.Adapter<HomeScreenRecyclerViewAdapter.CustomViewHolder> implements View.OnClickListener {
 
-    private final LayoutInflater mInflater;
     private final List<HomeScreenItemDao> mObjectList ;
     private final RecyclerClickInterface mClickInterface;
+    private Context mActivityContext = null;
 
-    public HomeScreenRecyclerViewAdapter(List<HomeScreenItemDao> objectList, Context context) {
+    public HomeScreenRecyclerViewAdapter(List<HomeScreenItemDao> objectList) {
         mObjectList = objectList;
-        mInflater = LayoutInflater.from(context);
         mClickInterface = null;
     }
 
-    public HomeScreenRecyclerViewAdapter(List<HomeScreenItemDao> objectList, Context context,RecyclerClickInterface interfaceImplementaion) {
+    public HomeScreenRecyclerViewAdapter(List<HomeScreenItemDao> objectList,RecyclerClickInterface interfaceImplementaion) {
         mObjectList = objectList;
-        mInflater = LayoutInflater.from(context);
         mClickInterface = interfaceImplementaion;
-    }
 
+    }
 
     @NonNull
     @Override
     public CustomViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        HomeScreenItemBinding binding = DataBindingUtil.inflate(mInflater,R.layout.home_screen_item,parent,false);
+        //parent.getContext()  -> return the activity context not application
+        //Can be also done by passing in the constructor or using Dagger
+        mActivityContext = parent.getContext();
+        HomeScreenItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(mActivityContext),R.layout.home_screen_item,parent,false);
         //attachToParent false for recycler view as it is responsible for inflating and displaying views(as per the optimal conditions) not us .
         return new CustomViewHolder(binding);
     }

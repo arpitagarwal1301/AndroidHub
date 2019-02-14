@@ -13,12 +13,17 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="10dp"
+        android:layout_margin="5dp"
+        android:background="@color/colorPrimary"
         android:gravity="center">
 
         <TextView
             android:id="@+id/item_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="20sp"
             tools:text="Item_Name"
             android:text="@{homeScreenItemDao.name}"/>
 
@@ -26,8 +31,11 @@
             android:id="@+id/item_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Item_Description"
-            android:text="@{homeScreenItemDao.desc}"/>
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            tools:text="Item_DescriptionItem_DescriptionItem_DescriptionItem_DescriptionItem_DescriptionItem_Description"
+            android:text="@{homeScreenItemDao.desc}"
+            android:gravity="center_horizontal"/>
 
     </LinearLayout>
 </layout>

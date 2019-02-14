@@ -19,7 +19,7 @@
         <!-- TODO :: study launch modes -->
         <activity
             android:name=".SplashScreen"
-            android:launchMode="standard">
+            android:launchMode="standard" android:theme="@style/SplashScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

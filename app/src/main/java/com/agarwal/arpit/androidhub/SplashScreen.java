@@ -1,5 +1,6 @@
 package com.agarwal.arpit.androidhub;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 
@@ -12,6 +13,11 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
+
+        Intent intent = new Intent(this,HomeScreenActivity.class);
+        startActivity(intent);
+        finish();
+
     }
 
     @Override
