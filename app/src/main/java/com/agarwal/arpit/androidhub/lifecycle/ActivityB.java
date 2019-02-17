@@ -1,6 +1,5 @@
 package com.agarwal.arpit.androidhub.lifecycle;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import com.agarwal.arpit.androidhub.R;
@@ -13,10 +12,6 @@ public class ActivityB extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_b);
-
-        Intent intent = new Intent(this, ActivityC.class);
-        startActivity(intent);
-        finish();
     }
 
 

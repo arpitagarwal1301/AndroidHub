@@ -3,25 +3,50 @@ package com.agarwal.arpit.androidhub.lifecycle;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import com.agarwal.arpit.androidhub.R;
 import com.agarwal.arpit.androidhub.Utils.Utils;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import timber.log.Timber;
 
-public class ActivityA extends AppCompatActivity{
+public class ActivityA extends AppCompatActivity {
+
+    @BindView(R.id.activitya_btn)
+    Button activityABtn;
+
+    @BindView(R.id.activityb_btn)
+    Button activityBBtn;
+
+    @BindView(R.id.activityc_btn)
+    Button activityCBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_a);
+        ButterKnife.bind(this);
         Timber.v("onCreate");
 
-        Intent intent = new Intent(this,ActivityB.class);
-        startActivityForResult(intent,0);
 
+        activityABtn.setOnClickListener(v ->{
+            Intent intent = new Intent(this,ActivityA.class);
+            startActivity(intent);
+        } );
+
+        activityBBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(this,ActivityB.class);
+            startActivityForResult(intent,0);
+        });
+
+        activityCBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(this,ActivityC.class);
+            startActivity(intent);
+        });
     }
 
     @Override

@@ -71,3 +71,11 @@ onPause -> onResume
     c. For inter-fragment communication send data via parent Activity (no direct communication b/w fragments)
     d. For sending data implement Interface in Activity which will send implementation to fragments and receive data .
     e. interfaces are initialised in onAttach of fragment
+
+
+Launch Modes
+
+1. standard        - same task , new instance always
+2. singleInstance  - new task , new instance , onNewIntent() if already there in as singleInstance
+3. singleTop       - same task, new instance if no instance at the top else ,if already top then onNewIntent() called
+4. singleTask      - only one instance of activity will exist for singleTask mode and it will be pushed as root(top of stack) of  task.

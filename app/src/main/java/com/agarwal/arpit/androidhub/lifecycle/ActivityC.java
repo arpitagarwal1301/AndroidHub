@@ -73,6 +73,7 @@ public class ActivityC extends AppCompatActivity implements FragmentCommunicatio
             for (int j = 0; j < i; j++) {
                 fragmentManager.popBackStack();
             }
+            receivedString = "";
 
         });
     }

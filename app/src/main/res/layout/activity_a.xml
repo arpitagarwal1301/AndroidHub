@@ -4,12 +4,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.agarwal.arpit.androidhub.lifecycle.ActivityA"
-    android:gravity="center">
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Activity A"
+        android:padding="10dp"/>
+
+    <Button
+        android:id="@+id/activitya_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Activity A"/>
 
+    <Button
+        android:id="@+id/activityb_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Activity B"/>
+
+    <Button
+        android:id="@+id/activityc_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Activity C"/>
 
 </LinearLayout>

@@ -29,10 +29,9 @@
         </activity>
         <activity android:name=".HomeScreenActivity" />
 
-        <activity android:name=".lifecycle.ActivityA"/>
-        <activity android:name=".lifecycle.ActivityB"/>
-        <activity android:name=".lifecycle.ActivityC" android:launchMode="singleTask"/>
-
+        <activity android:name=".lifecycle.ActivityA" android:launchMode="singleTask"/>
+        <activity android:name=".lifecycle.ActivityB" android:launchMode="singleInstance"/>
+        <activity android:name=".lifecycle.ActivityC" android:launchMode="singleTop"/>
 
     </application>
 
