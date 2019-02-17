@@ -1,0 +1,73 @@
+Notes on Activity lifecycle
+
+1. Callback methods in-order while activity creation :
+onCreate()
+onStart()
+OnRestoreSavedInstance()
+onPostCreate()
+onResume()
+onPostResume()
+onAttachedToWindow()
+onPause()
+onStop()
+onSaveInstanceState()
+onDestroy()
+
+2. ConfigChange like rotate screen , switching back and forth to Multi-window
+onPause -> onStop -> onSaveInstanceState -> onDestroy -> onCreate -> onStart -> onRestoreInstanceState -> onPostCreate ->
+-> onResume -> onPostResume -> onAttachedToWindow
+
+3. Selecting focus between multi-window app
+onPause -> onResume -> onPostResume (onAttachedToWindow NOT CALLED THIS TIME)
+
+4. Recent apps screen
+onPause -> onStop -> onSaveInstanceState -> onStart -> onResume -> onPostResume
+
+5. Switching to another activity (A->C )
+onPause (A) -> onCreate -> onStart -> onPostCreate -> onResume -> onPostResume -> onAttachedToWindow -> onStop(A) -> onSaveInstanceState(A)
+
+6. User taps Back button
+By default, the onSaveInstanceState() callback does not fire in this case override onBackPressed() to customise the behaviour like confirm-quit
+
+7. finish() from ActivityC to ActivityA
+onPause (C) ->  onStart -> onResume -> onPostResume  -> onStop(C) -> onDestroy(C)  ( onSaveInstanceState(C) not called )
+
+
+
+Notes on Fragment lifecycle
+onAttach()
+onCreateView()
+onViewCreated()
+onActivityCreated()
+onViewStateRestored()
+onStart()
+onResume()
+onPause()
+onStop()
+onSaveInstanceState()
+onDestroyView()
+onDestroy()
+onDetach()
+
+1. Attaching the fragment
+onAttach -> onCreate ->  onCreateView ->   onViewCreated ->  onActivityCreated ->  onViewStateRestored ->  onStart ->  onResume
+-> onPause(->onResume) -> onStop(->onStart) -> onDestroyView(->onCreateView) -> onDestroy(->onCreate) -> onDetach(->onAttach)
+
+2. Fragment is getting destroyed
+onPause -> onStop -> onDestroyView -> onDestroy -> onDetach
+
+3.Recent apps screen
+onPause -> onStop -> onSaveInstanceState
+
+4. Config change
+Fragment is destroyed and added once again just like activity
+
+5. Selecting focus between multi-window app
+onPause -> onResume
+
+6. Important Notes
+    a. Fragment can also be added via xml (statically)
+    b. Activity adding fragment dynamically should have a container for it
+    c. For inter-fragment communication send data via parent Activity (no direct communication b/w fragments)
+    d. For sending data implement Interface in Activity which will send implementation to fragments and receive data .
+    e. interfaces are initialised in onAttach of fragment

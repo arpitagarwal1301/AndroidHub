@@ -1,0 +1,104 @@
+{
+  "project_info": {
+    "project_number": "288493363985",
+    "firebase_url": "https://androidhub-d42c1.firebaseio.com",
+    "project_id": "androidhub-d42c1",
+    "storage_bucket": "androidhub-d42c1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:288493363985:android:9a30a322fac3e3a7",
+        "android_client_info": {
+          "package_name": "com.agarwal.arpit.androidhub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "288493363985-vusjp3iq3lu5n8guliuc9843f56bn1nl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1cS6hk0IBUhFXaqHt5IB-mlvpaZxPSGk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:288493363985:android:f7ceff2f47a0185a",
+        "android_client_info": {
+          "package_name": "com.agarwal.arpit.androidhub.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "288493363985-vusjp3iq3lu5n8guliuc9843f56bn1nl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1cS6hk0IBUhFXaqHt5IB-mlvpaZxPSGk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:288493363985:android:4926c817342ebb36",
+        "android_client_info": {
+          "package_name": "com.agarwal.arpit.androidhub.uat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "288493363985-vusjp3iq3lu5n8guliuc9843f56bn1nl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1cS6hk0IBUhFXaqHt5IB-mlvpaZxPSGk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

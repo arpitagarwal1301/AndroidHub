@@ -3,12 +3,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.agarwal.arpit.androidhub.lifecycle.ActivityC"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.agarwal.arpit.androidhub.lifecycle.ActivityC">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Activity C"/>
+        android:layout_margin="10dp"
+        android:text="Activity C" />
+
+    <Button
+        android:id="@+id/frag_a1_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FragmentA1" />
+
+    <Button
+        android:id="@+id/frag_a2_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FragmentA2" />
+
+    <Button
+        android:id="@+id/reset_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black" />
+
+    <FrameLayout
+        android:id="@+id/frag_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Fragment Container" />
+
+    </FrameLayout>
 
 </LinearLayout>

@@ -25,7 +25,7 @@ public class HomeScreenActivity extends AppCompatActivity {
 
     private List<HomeScreenItemDao> mAdapterList  = new ArrayList<>();
     private HomeScreenRecyclerViewAdapter adapter;
-    private HomeScreenBinding bindingObject ;
+    private HomeScreenBinding bindingObject ; //TODO :: get the object and access view directly
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
