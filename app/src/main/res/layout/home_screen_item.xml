@@ -5,7 +5,7 @@
     <data>
         <variable
             name="homeScreenItemDao"
-            type="com.agarwal.arpit.androidhub.daos.HomeScreenItemDao"/>
+            type="com.agarwal.arpit.androidhub.daos.FeatureEntity"/>
     </data>
 
     <LinearLayout

@@ -1,2 +1,4 @@
 <resources>
+    <string name="NO_CAMERA_ERROR">No Camera !</string>
+    <string name="SWICH_FLASH_ON">Switch the flash ON !</string>
 </resources>
