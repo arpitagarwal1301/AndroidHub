@@ -36,41 +36,30 @@ android {
 //        }
     }
 
-    compileSdkVersion 29
+    compileSdkVersion versions.compileSdk
     defaultConfig {
-        applicationId "com.agarwal.arpit.androidhub"
-        minSdkVersion 19
-        targetSdkVersion 29 // match the compile one
-        versionCode 1
+        applicationId names.applicationId
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.targetSdk // match the compile one
+        versionCode versionProperty.versionCode
         versionName versionProperty.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    flavorDimensions "access"
+    flavorDimensions names.flavourdimension
 
     productFlavors {
         live {
-            // change the name of application according to variants of app //
-            resValue "string", "app_name", "Android Hub_"+ versionProperty.versionName
-            dimension "access"
+            resValue "string", "app_name", "Android Hub_" + versionProperty.versionName
         }
         dev {
-            // dev utilizes minSDKVersion = 21 to allow the Android gradle plugin
-            // to pre-dex each module and produce an APK that can be tested on
-            // Android Lollipop without time consuming dex merging processes.
-            minSdkVersion 21
+
             applicationIdSuffix ".dev"
             resValue "string", "app_name", "Android Hub (Dev)_" + versionProperty.versionName
-            dimension "access"
         }
         uat {
-            // dev utilizes minSDKVersion = 21 to allow the Android gradle plugin
-            // to pre-dex each module and produce an APK that can be tested on
-            // Android Lollipop without time consuming dex merging processes.
-            minSdkVersion 21
             applicationIdSuffix ".uat"
             resValue "string", "app_name", "Android Hub (Uat)_" + versionProperty.versionName
-            dimension "access"
         }
     }
 
@@ -85,7 +74,6 @@ android {
 //            useProguard true //default true -> code obfuscater// instead use r8 enable true , false in gradle.properties
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             minifyEnabled = true
-//            signingConfig signingConfigs.release
         }
 
         debug {
@@ -94,7 +82,6 @@ android {
             // default is true -> disables proguard obfuscation butttt....minifyEnable can still be set true,
             pseudoLocalesEnabled true // generate pseudo locale
             debuggable true
-//            signingConfig signingConfigs.debug
         }
     }
 
@@ -106,11 +93,12 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    buildToolsVersion = '29.0.2'
+    buildToolsVersion = versions.buildtool
 
-    //TODO :: create .apk with names containing flavour,builtType and version name .
+
+    dynamicFeatures = [":flashit", ":detection"]
+
 }
-
 
 
 dependencies {
@@ -120,24 +108,24 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     /* NEW DEPENDENCIES ADDED*/
 
     //RECYCLERVIEW
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    //Butterknife
-//    implementation 'com.jakewharton:butterknife:10.2.0'
-//    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
+    api 'androidx.recyclerview:recyclerview:1.0.0'
     //Timber : Log library
-    implementation 'com.jakewharton.timber:timber:4.7.1'
+    api 'com.jakewharton.timber:timber:4.7.1'
     //Firebase Crashlytics
-    implementation 'com.google.firebase:firebase-core:17.2.0'
-    implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
-    implementation 'androidx.core:core-ktx:1.2.0-alpha04'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api 'com.google.firebase:firebase-core:17.2.0'
+    api 'com.crashlytics.sdk.android:crashlytics:2.10.1'
+    //Kotlin
+    api 'androidx.core:core-ktx:1.2.0-alpha04'
+
+    // Libraries which can be re-used in other modules should use the `api` keyword.
+    // This way they can be shared with dependent feature modules.
+    api 'com.google.android.material:material:1.0.0'
+    api "com.google.android.play:core:${versions.playcore}"
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
 }
 
 kapt {

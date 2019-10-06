@@ -9,30 +9,16 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.SeekBar
-import android.widget.TextView
-import android.widget.Toast
-import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 import com.agarwal.arpit.androidhub.R
 import com.agarwal.arpit.androidhub.projectutils.DisplayUtils
 import com.agarwal.arpit.androidhub.projectutils.DisplayUtils.Companion.getStringWrapper
 import kotlinx.android.synthetic.main.activity_flash_it.*
 
+private const val Value_ZERO = "0"
 
 class MainActivity : AppCompatActivity() {
 
-    companion object {
-        private val Value_ZERO = "0"
-    }
-
-
-//    //private ImageButton button;
-//    @BindView(R.id.textView_progress)
-//    var textView: TextView? = null
-//    @BindView(R.id.imageToggleButton)
-//    var button: ToggleButton? = null
-//    @BindView(R.id.seekBar)
-//    internal var seekBar: SeekBar? = null
     private var isFlashOn = false
     private var freq: Int = 0
     private var t: Thread? = null
@@ -145,15 +131,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun flashFlicker() {
         if (isFlashOn) {
-            freq = seekBar!!.progress
+            freq = seekBar.progress
             timeVar.setSleepTime(freq)
             stroboRunner = StroboRunner()
             t = Thread(stroboRunner)
             t!!.start()
             return
         } else {
-            Toast.makeText(this@MainActivity, getString(R.string.SWICH_FLASH_ON), Toast.LENGTH_SHORT).show()
-            seekBar!!.progress = 0
+            DisplayUtils.showToast(getStringWrapper(R.string.SWICH_FLASH_ON))
+            seekBar.progress = 0
             textView_progress.text = Value_ZERO
         }
     }
@@ -184,7 +170,7 @@ class MainActivity : AppCompatActivity() {
     /*Releasing camera resources*/
     private fun releaseCamera() {
         setFlashOn(false)
-        seekBar!!.progress = 0
+        seekBar.progress = 0
         isFlashOn = false
         textView_progress.text = Value_ZERO
         imageToggleButton.isChecked = false

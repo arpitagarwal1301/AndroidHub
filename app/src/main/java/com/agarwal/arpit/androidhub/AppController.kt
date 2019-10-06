@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.util.Log.INFO
 import com.crashlytics.android.Crashlytics
+import com.google.android.play.core.splitcompat.SplitCompat
 import timber.log.Timber
 
 open class AppController : Application(){
@@ -11,6 +12,11 @@ open class AppController : Application(){
 
     private lateinit var mInstance: AppController
     private lateinit var sContext: Context
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(newBase)
+        SplitCompat.installActivity(this)
+    }
 
     @Synchronized
     fun getInstance(): AppController {

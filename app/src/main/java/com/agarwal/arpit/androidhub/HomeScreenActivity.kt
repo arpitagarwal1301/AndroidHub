@@ -4,24 +4,26 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.agarwal.arpit.androidhub.daos.FeatureEntity
 import com.agarwal.arpit.androidhub.databinding.HomeScreenBinding
+import com.agarwal.arpit.androidhub.entities.FeatureEntity
 import com.agarwal.arpit.androidhub.lifecycle.ActivityA
 import kotlinx.android.synthetic.main.home_screen.*
 import java.util.*
 
-class HomeScreenActivity : AppCompatActivity() {
+private const val packageName = "com.agarwal.arpit.androidhub.flashit"
+private const val flashActivity = "$packageName.FlashActivity"
 
+class HomeScreenActivity : AppCompatActivity() {
 
     private val mAdapterList = ArrayList<FeatureEntity>()
     private lateinit var adapter: HomeScreenRecyclerViewAdapter
-    private val bindingObject: HomeScreenBinding? = null //TODO :: get the object and access view directly
+    private lateinit var bindingObject: HomeScreenBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.home_screen)
+        bindingObject = DataBindingUtil.setContentView(this,R.layout.home_screen)
 
         setUpController()
         sentDataRequest()
@@ -33,12 +35,10 @@ class HomeScreenActivity : AppCompatActivity() {
         adapter = HomeScreenRecyclerViewAdapter(mAdapterList, object : RecyclerClickInterface {
             override fun onClickAction(view: View) {
                 val position = view.getTag() as Int
-                //Todo :: implement click functionality
-
                 when (position) {
                     0 -> demonstrateLifecycle()
+                    1 -> launchActivity(flashActivity)
                 }
-
             }
         })
 
@@ -58,8 +58,16 @@ class HomeScreenActivity : AppCompatActivity() {
     private fun sentDataRequest() {
         mAdapterList.clear()
         mAdapterList.add(FeatureEntity("Lifecycle", "Demonstrates activity & fragment lifecycle"))
-        mAdapterList.add(FeatureEntity("Lifecycle1", "Demonstrates activity & fragment lifecycle1"))
+        mAdapterList.add(FeatureEntity("Flash", "Pub Flash Light"))
         adapter.notifyDataSetChanged()
+    }
+
+    /** Launch an activity by its class name. */
+    private fun launchActivity(className: String) {
+        Intent().setClassName(packageName, className)
+                .also {
+                    startActivity(it)
+                }
     }
 
 

@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.agarwal.arpit.androidhub.daos.FeatureEntity
 import com.agarwal.arpit.androidhub.databinding.HomeScreenItemBinding
+import com.agarwal.arpit.androidhub.entities.FeatureEntity
 
 class HomeScreenRecyclerViewAdapter() : RecyclerView.Adapter<HomeScreenRecyclerViewAdapter.CustomViewHolder>(), View.OnClickListener {
 
