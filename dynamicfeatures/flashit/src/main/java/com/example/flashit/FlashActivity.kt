@@ -1,4 +1,4 @@
-package com.agarwal.arpit.androidhub.flashit
+package com.example.flashit
 
 import android.annotation.TargetApi
 import android.content.Context
@@ -11,13 +11,14 @@ import android.util.Log
 import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import com.agarwal.arpit.androidhub.R
+import com.agarwal.arpit.androidhub.flashit.Time
 import com.agarwal.arpit.androidhub.projectutils.DisplayUtils
 import com.agarwal.arpit.androidhub.projectutils.DisplayUtils.Companion.getStringWrapper
 import kotlinx.android.synthetic.main.activity_flash_it.*
 
 private const val Value_ZERO = "0"
 
-class MainActivity : AppCompatActivity() {
+class FlashActivity : AppCompatActivity() {
 
     private var isFlashOn = false
     private var freq: Int = 0
