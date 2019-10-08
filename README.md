@@ -19,5 +19,6 @@ Structure :
 3. It uses Jetpack (anroidx.* libraries) instead of deprecated android.support.* libraries .
 4. Multiple product flavours(live,dev,uat) and build variants(release , debug) with each product flavour having it's own applicationId so that all product variants can be installed and tested in a device at the same time.
 
-
+Following and project naming conventions and guidelines 
+https://github.com/ribot/android-guidelines/blob/master/project_and_code_guidelines.md
 
