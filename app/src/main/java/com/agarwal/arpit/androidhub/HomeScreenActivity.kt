@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.agarwal.arpit.androidhub.databinding.HomeScreenBinding
 import com.agarwal.arpit.androidhub.entities.FeatureEntity
 import com.agarwal.arpit.androidhub.lifecycle.ActivityA
+import com.google.android.play.core.splitinstall.SplitInstallStateUpdatedListener
+import com.google.android.play.core.splitinstall.model.SplitInstallSessionStatus
 import kotlinx.android.synthetic.main.home_screen.*
 import java.util.*
 
@@ -21,9 +23,24 @@ class HomeScreenActivity : AppCompatActivity() {
     private lateinit var adapter: HomeScreenRecyclerViewAdapter
     private lateinit var bindingObject: HomeScreenBinding
 
+
+    /** Listener used to handle changes in state for install requests. */
+    private val listener = SplitInstallStateUpdatedListener { state ->
+
+            val multiInstall = state.moduleNames().size > 1
+            val names = state.moduleNames().joinToString { "-" }
+            when(state.status()){
+                SplitInstallSessionStatus.DOWNLOADING -> {
+                    //  In order to see this, the application has to be uploaded to the Play Store.
+                    TODO()
+                }
+            }
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        bindingObject = DataBindingUtil.setContentView(this,R.layout.home_screen)
+        bindingObject = DataBindingUtil.setContentView(this, R.layout.home_screen)
 
         setUpController()
         sentDataRequest()

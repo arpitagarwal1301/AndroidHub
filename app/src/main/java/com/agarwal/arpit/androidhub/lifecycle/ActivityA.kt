@@ -4,11 +4,9 @@ package com.agarwal.arpit.androidhub.lifecycle
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-
-import com.agarwal.arpit.androidhub.R
-import com.agarwal.arpit.androidhub.projectutils.DisplayUtils
 import androidx.appcompat.app.AppCompatActivity
+import com.agarwal.arpit.androidhub.R
+import com.agarwal.arpit.androidhub.projectutils.showToast
 import kotlinx.android.synthetic.main.activity_a.*
 import timber.log.Timber
 
@@ -44,9 +42,9 @@ class ActivityA : AppCompatActivity() {
         if (true) {
             if (requestCode == 0 && resultCode == Activity.RESULT_OK) {
                 val `val` = data!!.extras!!.getString("result").toString()
-                DisplayUtils.showToast(`val`)
+                showToast(`val`)
             } else if (resultCode == Activity.RESULT_CANCELED) {
-                DisplayUtils.showToast("No result returned for the activity with request code")
+                showToast("No result returned for the activity with request code")
             }
         }
     }

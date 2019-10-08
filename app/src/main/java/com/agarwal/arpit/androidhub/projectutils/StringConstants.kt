@@ -1,5 +1,3 @@
 package com.agarwal.arpit.androidhub.projectutils
 
-const val RECEIVED_STRING = "RECEIVED_STRING"
-
-
+const val BUNDLE_RECEIVED_STRING = "BUNDLE_RECEIVED_STRING"

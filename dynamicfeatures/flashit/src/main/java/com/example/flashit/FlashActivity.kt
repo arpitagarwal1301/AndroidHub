@@ -12,11 +12,11 @@ import android.widget.SeekBar
 import androidx.appcompat.app.AppCompatActivity
 import com.agarwal.arpit.androidhub.R
 import com.agarwal.arpit.androidhub.flashit.Time
-import com.agarwal.arpit.androidhub.projectutils.DisplayUtils
-import com.agarwal.arpit.androidhub.projectutils.DisplayUtils.Companion.getStringWrapper
+import com.agarwal.arpit.androidhub.projectutils.getStringWrapper
+import com.agarwal.arpit.androidhub.projectutils.showToast
 import kotlinx.android.synthetic.main.activity_flash_it.*
 
-private const val Value_ZERO = "0"
+private const val VALUE_ZERO = "0"
 
 class FlashActivity : AppCompatActivity() {
 
@@ -46,7 +46,7 @@ class FlashActivity : AppCompatActivity() {
 
         /*Checking availability of required camera hardware*/
         if (!pm.hasSystemFeature(PackageManager.FEATURE_CAMERA)) {
-            DisplayUtils.showToast(getStringWrapper(R.string.NO_CAMERA_ERROR))
+            showToast(getStringWrapper(R.string.NO_CAMERA_ERROR))
             return
         } else {
             //            initialiseResources();
@@ -94,7 +94,7 @@ class FlashActivity : AppCompatActivity() {
                 setFlashOn(false)
                 isFlashOn = false
                 seekBar!!.progress = 0
-                textView_progress.text = Value_ZERO
+                textView_progress.text = VALUE_ZERO
                 if (t != null) {
                     stopFlicker = true
                     t = null
@@ -139,9 +139,9 @@ class FlashActivity : AppCompatActivity() {
             t!!.start()
             return
         } else {
-            DisplayUtils.showToast(getStringWrapper(R.string.SWICH_FLASH_ON))
+            showToast(getStringWrapper(R.string.SWICH_FLASH_ON))
             seekBar.progress = 0
-            textView_progress.text = Value_ZERO
+            textView_progress.text = VALUE_ZERO
         }
     }
 
@@ -173,7 +173,7 @@ class FlashActivity : AppCompatActivity() {
         setFlashOn(false)
         seekBar.progress = 0
         isFlashOn = false
-        textView_progress.text = Value_ZERO
+        textView_progress.text = VALUE_ZERO
         imageToggleButton.isChecked = false
     }
 

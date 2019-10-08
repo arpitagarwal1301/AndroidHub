@@ -4,24 +4,15 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.agarwal.arpit.androidhub.AppController
 
-class DisplayUtils  {
 
-    companion object {
+fun showToast(msg:String){
+    Toast.makeText(AppController().getContext(), msg, Toast.LENGTH_SHORT).show()
+}
 
-        @JvmStatic
-        fun showToast( msg: String) {
-            Toast.makeText(AppController().getContext(), msg, Toast.LENGTH_SHORT).show()
-        }
+fun getColorWrapper(colorInt : Int):Int{
+    return ContextCompat.getColor(AppController().getContext(),colorInt)
+}
 
-        @JvmStatic
-        fun getColorWrapper(colorInt : Int) =
-             ContextCompat.getColor(AppController().getContext(),colorInt)
-
-        @JvmStatic
-        fun getStringWrapper(stringInt : Int) =
-                AppController().getContext().getString(stringInt)
-
-
-    }
-
+fun getStringWrapper(stringInt : Int):String{
+    return AppController().getContext().getString(stringInt)
 }

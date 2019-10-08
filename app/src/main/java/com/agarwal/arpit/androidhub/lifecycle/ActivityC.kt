@@ -6,12 +6,10 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.KeyEvent
 import android.view.View
-import android.widget.Button
-import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.agarwal.arpit.androidhub.R
-import com.agarwal.arpit.androidhub.projectutils.RECEIVED_STRING
+import com.agarwal.arpit.androidhub.projectutils.BUNDLE_RECEIVED_STRING
 import kotlinx.android.synthetic.main.activity_c.*
 import timber.log.Timber
 
@@ -40,7 +38,7 @@ class ActivityC : AppCompatActivity(), FragmentCommunication {
             val fragmentA2 = FragmentA2()
             if (!TextUtils.isEmpty(receivedString)) {
                 val bundle = Bundle()
-                bundle.putString(RECEIVED_STRING, receivedString)
+                bundle.putString(BUNDLE_RECEIVED_STRING, receivedString)
                 fragmentA2.arguments = bundle
             }
             addFragment(frag_container!!.getId(), fragmentA2, true, true)
