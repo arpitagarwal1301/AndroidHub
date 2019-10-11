@@ -3,13 +3,14 @@ package com.agarwal.arpit.androidhub
 import android.app.Application
 import android.content.Context
 import android.util.Log.INFO
+import android.util.Log.VERBOSE
+import com.agarwal.arpit.common.logging.HubLog
 import com.crashlytics.android.Crashlytics
-import com.google.android.play.core.splitcompat.SplitCompat
 import timber.log.Timber
 
-class AppController : Application(){
+class AppController : Application() {
 
-    companion object{
+    companion object {
         private lateinit var mInstance: AppController
         private lateinit var sContext: Context
 
@@ -25,19 +26,14 @@ class AppController : Application(){
     }
 
 
-
     override fun onCreate() {
         mInstance = this
         sContext = this
 
         super.onCreate()
 
-        //Initialising the Timber Library
-        if (BuildConfig.DEBUG) {
-            Timber.plant(Timber.DebugTree())
-        } else {
-            Timber.plant(CustomLogTree())
-        }
+        HubLog.init(BuildConfig.DEBUG)
+
     }
 
 
@@ -62,6 +58,23 @@ class AppController : Application(){
 
     }
 
+    private class CustomDebugTree : Timber.Tree() {
+
+        override fun isLoggable(tag: String?, priority: Int): Boolean {
+            return priority >= VERBOSE
+        }
+
+        override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
+            if (isLoggable(tag, priority)) {
+                if (null != t) {
+                    Crashlytics.logException(t)
+                }
+                Crashlytics.log(priority, tag, message)
+            }
+        }
+
+
+    }
 
 
 }

@@ -9,9 +9,9 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.agarwal.arpit.androidhub.R
-import com.agarwal.arpit.androidhub.projectutils.BUNDLE_RECEIVED_STRING
+import com.agarwal.arpit.common.logging.HubLog
+import com.agarwal.arpit.common.utils.BUNDLE_RECEIVED_STRING
 import kotlinx.android.synthetic.main.activity_c.*
-import timber.log.Timber
 
 class ActivityC : AppCompatActivity(), FragmentCommunication {
 
@@ -22,7 +22,7 @@ class ActivityC : AppCompatActivity(), FragmentCommunication {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_c)
-        Timber.v("onCreate")
+        HubLog.v("onCreate")
 
         setUpClickListener()
     }
@@ -75,60 +75,60 @@ class ActivityC : AppCompatActivity(), FragmentCommunication {
 
     override fun onStart() {
         super.onStart()
-        Timber.v("onStart")
+        HubLog.v("onStart")
     }
 
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        Timber.v("onRestoreInstanceState")
+        HubLog.v("onRestoreInstanceState")
 
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
-        Timber.v("onPostCreate")
+        HubLog.v("onPostCreate")
     }
 
     override fun onResume() {
         super.onResume()
-        Timber.v("onResume")
+        HubLog.v("onResume")
     }
 
     override fun onPostResume() {
         super.onPostResume()
-        Timber.v("onPostResume")
+        HubLog.v("onPostResume")
 
 
     }
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
-        Timber.v("onAttachedToWindow")
+        HubLog.v("onAttachedToWindow")
 
     }
 
 
     override fun onPause() {
         super.onPause()
-        Timber.v("onPause")
+        HubLog.v("onPause")
     }
 
     override fun onStop() {
         super.onStop()
-        Timber.v("onStop")
+        HubLog.v("onStop")
 
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        Timber.v("onSaveInstanceState")
+        HubLog.v("onSaveInstanceState")
 
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Timber.v("onDestroy")
+        HubLog.v("onDestroy")
 
     }
 

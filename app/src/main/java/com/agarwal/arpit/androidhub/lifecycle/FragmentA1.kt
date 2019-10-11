@@ -5,11 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
 import androidx.fragment.app.Fragment
 import com.agarwal.arpit.androidhub.R
+import com.agarwal.arpit.common.logging.HubLog
 import kotlinx.android.synthetic.main.fragment_a1.*
-import timber.log.Timber
 
 class FragmentA1 : Fragment(){
 
@@ -18,14 +17,13 @@ class FragmentA1 : Fragment(){
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        Timber.v("Fragment :onAttach")
-
+        HubLog.v("Fragment :onAttach")
         mFragmentCommunication = context as FragmentCommunication;// interfaces are initialised in onAttach of fragment
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Timber.v("Fragment :onCreate")
+        HubLog.v("Fragment :onCreate")
         retainInstance = true
 
     }
@@ -74,13 +72,13 @@ class FragmentA1 : Fragment(){
     }
 
     override fun onDestroy() {
-        Timber.v("Fragment :onDestroy")
+        HubLog.v("Fragment :onDestroy")
         super.onDestroy()
 
     }
 
     override fun onDetach() {
-        Timber.v("Fragment :onDetach")
+        HubLog.v("Fragment :onDetach")
         super.onDetach()
     }
 

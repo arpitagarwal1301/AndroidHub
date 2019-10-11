@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.agarwal.arpit.androidhub.databinding.ActivityHomeScreenBinding
 import com.agarwal.arpit.androidhub.entities.FeatureEntity
-import com.agarwal.arpit.androidhub.projectutils.getStringWrapper
+import com.agarwal.arpit.common.utils.getStringWrapper
 import com.google.android.play.core.splitinstall.SplitInstallManager
 import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
 import com.google.android.play.core.splitinstall.SplitInstallRequest
@@ -118,7 +118,7 @@ class HomeScreenActivity : AppCompatActivity() {
         })
 
 
-        recycler_view.layoutManager = GridLayoutManager(this, 2)
+        recycler_view.layoutManager = GridLayoutManager(this, 2) as RecyclerView.LayoutManager?
         recycler_view.setHasFixedSize(false)
         recycler_view.adapter = mAdapter
 

@@ -3,7 +3,12 @@ apply from: '../android_commons.gradle'
 
 dependencies {
 
+
+
     implementation KotlinLibraries.kotlin
     implementation AndroidLibraries.appCompat
     implementation AndroidLibraries.constraintLayout
+    implementation Libraries.timber
+    implementation Libraries.crashlytics
+
 }

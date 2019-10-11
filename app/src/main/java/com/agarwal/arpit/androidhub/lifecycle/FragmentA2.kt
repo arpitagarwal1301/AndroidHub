@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.agarwal.arpit.androidhub.R
-import com.agarwal.arpit.androidhub.projectutils.BUNDLE_RECEIVED_STRING
+import com.agarwal.arpit.common.utils.BUNDLE_RECEIVED_STRING
 import kotlinx.android.synthetic.main.fragment_a2.*
 
 class FragmentA2 : Fragment() {

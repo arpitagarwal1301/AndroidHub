@@ -16,12 +16,10 @@ android {
             storeFile file('/Users/arpit/arpit/workspace/AndroidProjects/AndroidHub/AndroidHub/app/AndoidHubKey')
             storePassword 'incredible'
         }
-
     }
 
     defaultConfig{
         applicationId Names.applicationId
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
 
@@ -54,40 +52,34 @@ android {
             //if you set useProguard false in your app module's build.gradle file, the Android Gradle plugin uses R8 to shrink your app's code for that build type, regardless of whether you disable R8 in your project's gradle.properties file.
 //            useProguard false // instead use r8 enable true , false in gradle.properties
             // default is true -> disables proguard obfuscation butttt....minifyEnable can still be set true,
-            pseudoLocalesEnabled true // generate pseudo locale
             debuggable true
         }
     }
 
 
 
-    dynamicFeatures = [":dynamicfeature"]
+    dynamicFeatures = [Modules.dynamicfeature]
 
 }
 
 
 dependencies {
-    //tells the build system to include any
-    //JAR files inside the app/libs/ directory in the compilation classpath and in the final package of
-    //your app.
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation AndroidLibraries.appCompat
+
+    api project(Modules.common)
+
+    //Android
+    api AndroidLibraries.appCompat
     implementation AndroidLibraries.constraintLayout
-
-    /* NEW DEPENDENCIES ADDED*/
-
-    api AndroidLibraries.recyclerview
-    api AndroidLibraries.material
-    api AndroidLibraries.play_core
-    api AndroidLibraries.coreKtx
-
-    api Libraries.timber
-    api Libraries.glide
-    api Libraries.firebase_core
-    api Libraries.crashlytics
+    implementation AndroidLibraries.recyclerview
+    implementation AndroidLibraries.material
+    implementation AndroidLibraries.play_core
+    implementation AndroidLibraries.coreKtx
+    //Third party
+    implementation Libraries.timber
+    implementation Libraries.glide
+    implementation Libraries.firebase_core
+    implementation Libraries.crashlytics
 }
-
-
 
 apply plugin: 'com.google.gms.google-services'
 

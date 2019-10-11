@@ -3,6 +3,5 @@ apply from: '../android_commons.gradle'
 
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':app')
+    implementation project(Modules.app)
 }
