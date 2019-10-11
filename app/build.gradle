@@ -1,19 +1,12 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
-// For supporting/other modules apply plugin: 'com.android.library'
 apply plugin: 'io.fabric'
 apply plugin: 'kotlin-kapt'
 
 
-// Create a variable called keystorePropertiesFile, and initialize it to your
-// keystore.properties file, in the rootProject folder.
 def keystorePropertiesFile = rootProject.file("keystore.properties")
-
-// Initialize a new Properties() object called keystoreProperties.
 def keystoreProperties = new Properties()
-
-// Load your keystore.properties file into the keystoreProperties object.
 keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 
@@ -22,18 +15,12 @@ android {
     signingConfigs {
 
         release {
-            keyAlias keystoreProperties['KEY_ALIAS']
-            keyPassword keystoreProperties['KEY_PASSWORD']
-            storeFile file(keystoreProperties['STORE_FILE'])
-            storePassword keystoreProperties['STORE_PASSWORD']
+            keyAlias 'dwalle'
+            keyPassword 'incredible'
+            storeFile file('/Users/arpit/arpit/workspace/AndroidProjects/AndroidHub/AndroidHub/app/AndoidHubKey')
+            storePassword 'incredible'
         }
 
-//        debug {
-//            keyAlias keystoreProperties['KEY_ALIAS_DEBUG']
-//            keyPassword keystoreProperties['KEY_PASSWORD_DEBUG']
-//            storeFile file(keystoreProperties['STORE_FILE_DEBUG'])
-//            storePassword keystoreProperties['STORE_PASSWORD_DEBUG']
-//        }
     }
 
     compileSdkVersion versions.compileSdk
@@ -44,22 +31,20 @@ android {
         versionCode versionProperty.versionCode
         versionName versionProperty.versionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
+    buildToolsVersion = versions.buildtool
+
 
     flavorDimensions names.flavourdimension
-
     productFlavors {
         live {
-            resValue "string", "app_name", "Android Hub_" + versionProperty.versionName
         }
         dev {
-
             applicationIdSuffix ".dev"
-            resValue "string", "app_name", "Android Hub (Dev)_" + versionProperty.versionName
         }
         uat {
             applicationIdSuffix ".uat"
-            resValue "string", "app_name", "Android Hub (Uat)_" + versionProperty.versionName
         }
     }
 
@@ -93,10 +78,9 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    buildToolsVersion = versions.buildtool
 
 
-    dynamicFeatures = [":flashit", ":detection"]
+    dynamicFeatures = [":dynamicfeature"]
 
 }
 
@@ -111,18 +95,11 @@ dependencies {
 
     /* NEW DEPENDENCIES ADDED*/
 
-    //RECYCLERVIEW
     api 'androidx.recyclerview:recyclerview:1.0.0'
-    //Timber : Log library
     api 'com.jakewharton.timber:timber:4.7.1'
-    //Firebase Crashlytics
     api 'com.google.firebase:firebase-core:17.2.0'
     api 'com.crashlytics.sdk.android:crashlytics:2.10.1'
-    //Kotlin
-    api 'androidx.core:core-ktx:1.2.0-alpha04'
-
-    // Libraries which can be re-used in other modules should use the `api` keyword.
-    // This way they can be shared with dependent feature modules.
+    api 'androidx.core:core-ktx:1.2.0-beta01'
     api 'com.google.android.material:material:1.0.0'
     api "com.google.android.play:core:${versions.playcore}"
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
@@ -133,6 +110,7 @@ kapt {
 }
 
 apply plugin: 'com.google.gms.google-services'
+
 repositories {
     mavenCentral()
 }

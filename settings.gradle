@@ -1,8 +1,2 @@
-include ':app'
-include ':flashit'
-include ':detection'
+include ':app', ':dynamicfeature'
 
-// Allows to have the four features modules shown in AS's Android view
-// without an empty "features" module.
-project(":flashit").projectDir = new File(rootDir, "dynamicfeatures/flashit")
-project(":detection").projectDir = new File(rootDir, "dynamicfeatures/detection")

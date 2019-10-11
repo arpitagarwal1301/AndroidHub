@@ -1,4 +1,4 @@
-package com.example.flashit
+package com.agarwal.arpit.flashlight
 
 import android.annotation.TargetApi
 import android.content.Context
@@ -9,16 +9,19 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.SeekBar
+import android.widget.TextView
+import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
-import com.agarwal.arpit.androidhub.R
 import com.agarwal.arpit.androidhub.flashit.Time
 import com.agarwal.arpit.androidhub.projectutils.getStringWrapper
 import com.agarwal.arpit.androidhub.projectutils.showToast
-import kotlinx.android.synthetic.main.activity_flash_it.*
 
 private const val VALUE_ZERO = "0"
 
 class FlashActivity : AppCompatActivity() {
+
+
+
 
     private var isFlashOn = false
     private var freq: Int = 0
@@ -86,15 +89,15 @@ class FlashActivity : AppCompatActivity() {
     private fun setToggleButtonBehaviour() {
 
         //Using toggle button with background image
-        imageToggleButton.setOnCheckedChangeListener { buttonView, isChecked ->
+        findViewById<ToggleButton>(R.id.imageToggleButton).setOnCheckedChangeListener { buttonView, isChecked ->
             isFlashOn = isChecked
             if (!isChecked) {
                 // The toggle is enabled
                 Log.i("info", "torch is turned off!")
                 setFlashOn(false)
                 isFlashOn = false
-                seekBar!!.progress = 0
-                textView_progress.text = VALUE_ZERO
+                findViewById<SeekBar>(R.id.seekBar).progress = 0
+                findViewById<TextView>(R.id.textView_progress).text = VALUE_ZERO
                 if (t != null) {
                     stopFlicker = true
                     t = null
@@ -111,20 +114,20 @@ class FlashActivity : AppCompatActivity() {
 
     private fun seekBarMethod() {
         /*SeekBar which will indicate value of brightness of torch*/
-        seekBar.max = 10
-        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        findViewById<SeekBar>(R.id.seekBar).max = 10
+        findViewById<SeekBar>(R.id.seekBar).setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             internal var progressValue: Int = 0
 
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 progressValue = progress
-                textView_progress.text = progressValue.toString() + ""
+                findViewById<TextView>(R.id.textView_progress).text = progressValue.toString() + ""
 
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {}
 
             override fun onStopTrackingTouch(seekBar: SeekBar) {
-                textView_progress.text = progressValue.toString() + ""
+                findViewById<TextView>(R.id.textView_progress).text = progressValue.toString() + ""
                 flashFlicker()
             }
         })
@@ -132,7 +135,7 @@ class FlashActivity : AppCompatActivity() {
 
     private fun flashFlicker() {
         if (isFlashOn) {
-            freq = seekBar.progress
+            freq = findViewById<SeekBar>(R.id.seekBar).progress
             timeVar.setSleepTime(freq)
             stroboRunner = StroboRunner()
             t = Thread(stroboRunner)
@@ -140,8 +143,8 @@ class FlashActivity : AppCompatActivity() {
             return
         } else {
             showToast(getStringWrapper(R.string.SWICH_FLASH_ON))
-            seekBar.progress = 0
-            textView_progress.text = VALUE_ZERO
+            findViewById<SeekBar>(R.id.seekBar).progress = 0
+            findViewById<TextView>(R.id.textView_progress).text = VALUE_ZERO
         }
     }
 
@@ -171,10 +174,10 @@ class FlashActivity : AppCompatActivity() {
     /*Releasing camera resources*/
     private fun releaseCamera() {
         setFlashOn(false)
-        seekBar.progress = 0
+        findViewById<SeekBar>(R.id.seekBar).progress = 0
         isFlashOn = false
-        textView_progress.text = VALUE_ZERO
-        imageToggleButton.isChecked = false
+        findViewById<TextView>(R.id.textView_progress).text = VALUE_ZERO
+        findViewById<ToggleButton>(R.id.imageToggleButton).isChecked = false
     }
 
 

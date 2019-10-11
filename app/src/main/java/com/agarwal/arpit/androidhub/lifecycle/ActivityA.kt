@@ -20,17 +20,17 @@ class ActivityA : AppCompatActivity() {
         Timber.v("onCreate")
 
 
-        activitya_btn.setOnClickListener { v ->
+        activitya_btn.setOnClickListener {
             val intent = Intent(this, ActivityA::class.java)
             startActivity(intent)
         }
 
-        activityb_btn.setOnClickListener { v ->
+        activityb_btn.setOnClickListener {
             val intent = Intent(this, ActivityB::class.java)
             startActivityForResult(intent, 0)
         }
 
-        activityc_btn.setOnClickListener { v ->
+        activityc_btn.setOnClickListener {
             val intent = Intent(this, ActivityC::class.java)
             startActivity(intent)
         }

@@ -1,6 +1,6 @@
 
 
 def versionProperty = [:]
-versionProperty.versionCode = 1
-versionProperty.versionName = "1.0";
+versionProperty.versionCode = 2
+versionProperty.versionName = "1.0.1";
 ext.versionProperty = versionProperty

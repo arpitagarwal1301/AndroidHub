@@ -7,25 +7,24 @@ import com.crashlytics.android.Crashlytics
 import com.google.android.play.core.splitcompat.SplitCompat
 import timber.log.Timber
 
-open class AppController : Application(){
+class AppController : Application(){
+
+    companion object{
+        private lateinit var mInstance: AppController
+        private lateinit var sContext: Context
 
 
-    private lateinit var mInstance: AppController
-    private lateinit var sContext: Context
+        @Synchronized
+        fun getInstance(): AppController {
+            return mInstance
+        }
 
-    override fun attachBaseContext(newBase: Context?) {
-        super.attachBaseContext(newBase)
-        SplitCompat.installActivity(this)
+        fun getContext(): Context {
+            return sContext
+        }
     }
 
-    @Synchronized
-    fun getInstance(): AppController {
-        return mInstance
-    }
 
-    fun getContext(): Context {
-        return sContext
-    }
 
     override fun onCreate() {
         mInstance = this

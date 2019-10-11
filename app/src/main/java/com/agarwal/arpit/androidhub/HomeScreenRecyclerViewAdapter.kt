@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.agarwal.arpit.androidhub.databinding.HomeScreenItemBinding
+import com.agarwal.arpit.androidhub.databinding.ItemHomeScreenBinding
 import com.agarwal.arpit.androidhub.entities.FeatureEntity
 
 class HomeScreenRecyclerViewAdapter() : RecyclerView.Adapter<HomeScreenRecyclerViewAdapter.CustomViewHolder>(), View.OnClickListener {
@@ -15,9 +15,6 @@ class HomeScreenRecyclerViewAdapter() : RecyclerView.Adapter<HomeScreenRecyclerV
     private var mObjectList = listOf<FeatureEntity>();
     private var mContext: Context? = null
 
-    constructor(objectList: List<FeatureEntity>) : this() {
-        mObjectList = objectList;
-    }
 
     constructor(objectList: List<FeatureEntity>, interfaceImplemention: RecyclerClickInterface) : this() {
         mObjectList = objectList;
@@ -29,14 +26,14 @@ class HomeScreenRecyclerViewAdapter() : RecyclerView.Adapter<HomeScreenRecyclerV
         //parent.getContext()  -> return the activity context not application
         //Can be also done by passing in the constructor or using Dagger
         mContext = parent.context
-        val binding = DataBindingUtil.inflate<HomeScreenItemBinding>(LayoutInflater.from(mContext), R.layout.home_screen_item, parent, false)
+        val binding = DataBindingUtil.inflate<ItemHomeScreenBinding>(LayoutInflater.from(mContext), R.layout.item_home_screen, parent, false)
         //attachToParent false for recycler view as it is responsible for inflating and displaying views(as per the optimal conditions) not us .
         return CustomViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         holder.bindingObject.homeScreenItemDao = mObjectList[position]
-        holder.bindingObject.parentLayout?.let {
+        holder.bindingObject.parentLayout.let {
             it.setOnClickListener(this)
             it.tag = position
         }
@@ -48,7 +45,7 @@ class HomeScreenRecyclerViewAdapter() : RecyclerView.Adapter<HomeScreenRecyclerV
     }
 
 
-    class CustomViewHolder(val bindingObject: HomeScreenItemBinding) : RecyclerView.ViewHolder(bindingObject.root)
+    class CustomViewHolder(val bindingObject: ItemHomeScreenBinding) : RecyclerView.ViewHolder(bindingObject.root)
 
     override fun getItemCount() = mObjectList.size
 }

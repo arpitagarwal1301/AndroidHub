@@ -1,24 +1,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:dist="http://schemas.android.com/apk/distribution"
-    package="com.example.flashit">
+    package="com.agarwal.arpit.flashlight">
 
     <dist:module
         dist:instant="false"
-        dist:title="@string/title_flash_it">
+        dist:title="@string/title_dynamicfeature">
         <dist:delivery>
             <dist:on-demand />
         </dist:delivery>
         <dist:fusing dist:include="true" />
     </dist:module>
 
-
-    <application>
+    <application android:hasCode="true">
         <activity android:name=".FlashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
         </activity>
     </application>
-
 </manifest>
 
