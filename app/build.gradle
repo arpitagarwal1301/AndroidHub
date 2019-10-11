@@ -8,30 +8,17 @@ keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 
 android {
 
-    signingConfigs {
-
-        release {
-            keyAlias 'dwalle'
-            keyPassword 'incredible'
-            storeFile file('/Users/arpit/arpit/workspace/AndroidProjects/AndroidHub/AndroidHub/app/AndoidHubKey')
-            storePassword 'incredible'
-        }
-    }
 
     defaultConfig{
         applicationId Names.applicationId
         multiDexEnabled true
     }
-
-    flavorDimensions Names.flavourdimension
     productFlavors {
-        live {
-        }
         dev {
-            applicationIdSuffix ".dev"
+            applicationIdSuffix = '.dev'
         }
         uat {
-            applicationIdSuffix ".uat"
+            applicationIdSuffix = '.uat'
         }
     }
 

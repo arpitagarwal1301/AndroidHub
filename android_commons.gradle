@@ -4,12 +4,25 @@ apply plugin: 'kotlin-kapt'
 
 
 android {
+
+    signingConfigs {
+
+        release {
+            keyAlias 'dwalle'
+            keyPassword 'incredible'
+            storeFile file('/Users/arpit/arpit/workspace/AndroidProjects/AndroidHub/AndroidHub/app/AndoidHubKey')
+            storePassword 'incredible'
+        }
+    }
+
     compileSdkVersion SdkVersions.compileSdk
     defaultConfig {
         minSdkVersion SdkVersions.minSdk
         targetSdkVersion SdkVersions.tarketSdk // match the compile one
         versionCode Releases.versionCode
         versionName Releases.versionName
+        flavorDimensions Names.flavourdimension
+
     }
     buildToolsVersion = SdkVersions.buildtool
 
@@ -17,10 +30,13 @@ android {
     flavorDimensions Names.flavourdimension
     productFlavors {
         live {
+            signingConfig signingConfigs.debug
         }
         dev {
+            signingConfig signingConfigs.debug
         }
         uat {
+            signingConfig signingConfigs.debug
         }
     }
 
