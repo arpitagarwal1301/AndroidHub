@@ -1,0 +1,47 @@
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+
+android {
+    compileSdkVersion SdkVersions.compileSdk
+    defaultConfig {
+        minSdkVersion SdkVersions.minSdk
+        targetSdkVersion SdkVersions.tarketSdk // match the compile one
+        versionCode Releases.versionCode
+        versionName Releases.versionName
+    }
+    buildToolsVersion = SdkVersions.buildtool
+
+
+    flavorDimensions Names.flavourdimension
+    productFlavors {
+        live {
+        }
+        dev {
+        }
+        uat {
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+kapt {
+    generateStubs = true
+}
+
+dependencies {
+    implementation KotlinLibraries.kotlin
+}
+
+repositories {
+    mavenCentral()
+}

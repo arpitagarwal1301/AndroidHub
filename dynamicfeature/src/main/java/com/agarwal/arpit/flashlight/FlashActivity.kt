@@ -9,12 +9,11 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.SeekBar
-import android.widget.TextView
-import android.widget.ToggleButton
 import androidx.appcompat.app.AppCompatActivity
 import com.agarwal.arpit.androidhub.flashit.Time
 import com.agarwal.arpit.androidhub.projectutils.getStringWrapper
 import com.agarwal.arpit.androidhub.projectutils.showToast
+import kotlinx.android.synthetic.main.activity_flash_it.*
 
 private const val VALUE_ZERO = "0"
 
@@ -89,15 +88,15 @@ class FlashActivity : AppCompatActivity() {
     private fun setToggleButtonBehaviour() {
 
         //Using toggle button with background image
-        findViewById<ToggleButton>(R.id.imageToggleButton).setOnCheckedChangeListener { buttonView, isChecked ->
+        imageToggleButton.setOnCheckedChangeListener { _, isChecked ->
             isFlashOn = isChecked
             if (!isChecked) {
                 // The toggle is enabled
                 Log.i("info", "torch is turned off!")
                 setFlashOn(false)
                 isFlashOn = false
-                findViewById<SeekBar>(R.id.seekBar).progress = 0
-                findViewById<TextView>(R.id.textView_progress).text = VALUE_ZERO
+                seekBar.progress = 0
+                textView_progress.text = VALUE_ZERO
                 if (t != null) {
                     stopFlicker = true
                     t = null
@@ -114,20 +113,20 @@ class FlashActivity : AppCompatActivity() {
 
     private fun seekBarMethod() {
         /*SeekBar which will indicate value of brightness of torch*/
-        findViewById<SeekBar>(R.id.seekBar).max = 10
-        findViewById<SeekBar>(R.id.seekBar).setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+        seekBar.max = 10
+        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             internal var progressValue: Int = 0
 
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 progressValue = progress
-                findViewById<TextView>(R.id.textView_progress).text = progressValue.toString() + ""
+                textView_progress.text = progressValue.toString() + ""
 
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {}
 
             override fun onStopTrackingTouch(seekBar: SeekBar) {
-                findViewById<TextView>(R.id.textView_progress).text = progressValue.toString() + ""
+                textView_progress.text = progressValue.toString() + ""
                 flashFlicker()
             }
         })
@@ -135,7 +134,7 @@ class FlashActivity : AppCompatActivity() {
 
     private fun flashFlicker() {
         if (isFlashOn) {
-            freq = findViewById<SeekBar>(R.id.seekBar).progress
+            freq = seekBar.progress
             timeVar.setSleepTime(freq)
             stroboRunner = StroboRunner()
             t = Thread(stroboRunner)
@@ -143,8 +142,8 @@ class FlashActivity : AppCompatActivity() {
             return
         } else {
             showToast(getStringWrapper(R.string.SWICH_FLASH_ON))
-            findViewById<SeekBar>(R.id.seekBar).progress = 0
-            findViewById<TextView>(R.id.textView_progress).text = VALUE_ZERO
+            seekBar.progress = 0
+            textView_progress.text = VALUE_ZERO
         }
     }
 
@@ -174,10 +173,10 @@ class FlashActivity : AppCompatActivity() {
     /*Releasing camera resources*/
     private fun releaseCamera() {
         setFlashOn(false)
-        findViewById<SeekBar>(R.id.seekBar).progress = 0
+        seekBar.progress = 0
         isFlashOn = false
-        findViewById<TextView>(R.id.textView_progress).text = VALUE_ZERO
-        findViewById<ToggleButton>(R.id.imageToggleButton).isChecked = false
+        textView_progress.text = VALUE_ZERO
+        imageToggleButton.isChecked = false
     }
 
 

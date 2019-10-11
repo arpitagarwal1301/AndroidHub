@@ -44,7 +44,7 @@ class ActivityC : AppCompatActivity(), FragmentCommunication {
             addFragment(frag_container!!.getId(), fragmentA2, true, true)
         })
 
-        reset_btn?.setOnClickListener { v ->
+        reset_btn?.setOnClickListener {
             val fragmentManager = supportFragmentManager
             val i = fragmentManager.backStackEntryCount
             for (j in 0 until i) {

@@ -1,0 +1,9 @@
+apply plugin: 'com.android.library'
+apply from: '../android_commons.gradle'
+
+dependencies {
+
+    implementation KotlinLibraries.kotlin
+    implementation AndroidLibraries.appCompat
+    implementation AndroidLibraries.constraintLayout
+}
