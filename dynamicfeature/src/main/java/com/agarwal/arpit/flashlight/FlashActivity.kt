@@ -9,7 +9,7 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.SeekBar
-import androidx.appcompat.app.AppCompatActivity
+import com.agarwal.arpit.androidhub.BaseSplitActivity
 import com.agarwal.arpit.androidhub.flashit.Time
 import com.agarwal.arpit.common.utils.getStringWrapper
 import com.agarwal.arpit.common.utils.showToast
@@ -17,10 +17,7 @@ import kotlinx.android.synthetic.main.activity_flash_it.*
 
 private const val VALUE_ZERO = "0"
 
-class FlashActivity : AppCompatActivity() {
-
-
-
+class FlashActivity : BaseSplitActivity() {
 
     private var isFlashOn = false
     private var freq: Int = 0

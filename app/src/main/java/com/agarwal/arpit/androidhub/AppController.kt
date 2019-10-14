@@ -1,10 +1,10 @@
 package com.agarwal.arpit.androidhub
 
-import android.app.Application
 import android.content.Context
 import com.agarwal.arpit.common.logging.HubLog
+import com.google.android.play.core.splitcompat.SplitCompatApplication
 
-class AppController : Application() {
+class AppController : SplitCompatApplication() {
 
     companion object {
         private lateinit var mInstance: AppController

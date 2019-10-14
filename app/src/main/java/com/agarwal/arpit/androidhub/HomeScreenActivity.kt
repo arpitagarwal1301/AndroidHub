@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.agarwal.arpit.androidhub.databinding.ActivityHomeScreenBinding
 import com.agarwal.arpit.androidhub.entities.FeatureEntity
 import com.agarwal.arpit.common.utils.getStringWrapper
+import com.agarwal.arpit.common.utils.showToast
 import com.google.android.play.core.splitinstall.SplitInstallManager
 import com.google.android.play.core.splitinstall.SplitInstallManagerFactory
 import com.google.android.play.core.splitinstall.SplitInstallRequest
@@ -30,7 +31,7 @@ class HomeScreenActivity : AppCompatActivity() {
     private lateinit var mBindingObject: ActivityHomeScreenBinding
     private lateinit var mSplitInstallManager: SplitInstallManager
 
-    private val moduleFlashLight by lazy { getStringWrapper(R.string.title_flash_it) }
+    private val moduleFlashLight by lazy { getStringWrapper(R.string.module_feature_flash_light) }
 
     /** Listener used to handle changes in state for install requests. */
     private val listener = SplitInstallStateUpdatedListener { state ->
@@ -57,9 +58,13 @@ class HomeScreenActivity : AppCompatActivity() {
             }
 
             SplitInstallSessionStatus.DOWNLOADED -> {
-
+                showToast("DOWNLOADED")
                 hideProgressBar()
+            }
 
+            SplitInstallSessionStatus.INSTALLED -> {
+                showToast("INSTALLED")
+                onSuccessfulLoad(names, launch = !multiInstall)
             }
 
             SplitInstallSessionStatus.INSTALLING -> {
@@ -67,13 +72,12 @@ class HomeScreenActivity : AppCompatActivity() {
                 updateProgressMessage("Installing : ${state.bytesDownloaded()}/${state.totalBytesToDownload()}")
             }
 
-            SplitInstallSessionStatus.INSTALLED -> {
-                onSuccessfulLoad(names, launch = !multiInstall)
-            }
+
 
             SplitInstallSessionStatus.FAILED -> {
-                hideProgressBar()
+                showToast("Failed")
                 updateProgressMessage("Failed")
+                hideProgressBar()
             }
 
             SplitInstallSessionStatus.CANCELING -> {
@@ -101,8 +105,10 @@ class HomeScreenActivity : AppCompatActivity() {
 
     override fun onResume() {
         // Listener can be registered even without directly triggering a download.
-        mSplitInstallManager.registerListener(listener)
+        showToast( "Listener registered clicked")
         super.onResume()
+        mSplitInstallManager.registerListener(listener)
+
     }
 
     private fun setUpController() {
@@ -189,7 +195,7 @@ class HomeScreenActivity : AppCompatActivity() {
 
     /** Launch an activity by its class name. */
     private fun launchActivity(className: String) {
-        Intent().setClassName(packageName, className)
+        Intent().setClassName(packageNameApp, className)
                 .also {
                     startActivity(it)
                 }

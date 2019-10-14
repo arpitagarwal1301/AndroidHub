@@ -3,7 +3,8 @@
 
     <string name="NO_CAMERA_ERROR">No Camera !</string>
     <string name="SWICH_FLASH_ON">Switch the flash ON !</string>
-    <string name="title_flash_it">Flash It</string>
     <string name="title_detection">Detection</string>
     <string name="title_dynamicfeature">FlashLight</string>
+    <string name="module_feature_flash_light">dynamicfeature</string>
+    <string name="module_feature_detection">FlashLight</string>
 </resources>
