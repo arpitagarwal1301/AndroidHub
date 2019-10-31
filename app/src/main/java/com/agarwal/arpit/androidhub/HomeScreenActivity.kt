@@ -105,7 +105,6 @@ class HomeScreenActivity : AppCompatActivity() {
 
     override fun onResume() {
         // Listener can be registered even without directly triggering a download.
-        showToast( "Listener registered clicked")
         super.onResume()
         mSplitInstallManager.registerListener(listener)
 

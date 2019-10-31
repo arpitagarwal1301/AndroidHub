@@ -1,0 +1,19 @@
+apply plugin: 'com.android.library'
+apply from: '../android_commons.gradle'
+
+dependencies {
+
+    api project(Modules.common)
+
+    implementation 'com.google.android.gms:play-services-maps:16.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation KotlinLibraries.kotlin
+    implementation AndroidLibraries.appCompat
+    implementation AndroidLibraries.constraintLayout
+    implementation Libraries.timber
+    implementation Libraries.crashlytics
+
+}

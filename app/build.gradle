@@ -53,6 +53,7 @@ android {
 dependencies {
 
     api project(Modules.common)
+    api project(Modules.geolocation)
 
     //Android
     api AndroidLibraries.appCompat

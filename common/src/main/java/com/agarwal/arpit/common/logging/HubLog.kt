@@ -4,18 +4,34 @@ import androidx.annotation.Nullable
 import com.crashlytics.android.Crashlytics
 import timber.log.Timber
 
+/*
+Supplying tag instead of taking tag of the class/fragment because :
+1. It is done using reflection which is a heavy operation
+2. During obfuscation the name change so instead we should provide string tag or put tag in the message itself
+
+In case this is the requirement then iterate the stack trace and if class name is not equal to  "HubLog,LoggerFacade,Thread"  then return the class .
+Also you can use Pattern matcher to check for abnormal class names .
+
+StackTrace :
+
+This Highly depends on what you are looking for... But this should get the class and method that called this method within this object directly.
+
+index 0 = Thread
+index 1 = this
+index 2 = direct caller, can be self.
+index 3 ... n = classes and methods that called each other to get to the index 2 and below.
+ */
+
+private const val DEFAULT_TAG = "HubLog"
 
 class HubLog {
 
     companion object {
-        private val DEFAULT_TAG = "HubLog"
 
         private lateinit var mLogFacade: LoggerFacade
-        private var mIsDebug : Boolean = true
 
         fun init(b: Boolean) {
-            mLogFacade = LoggerFacade(mIsDebug)
-            mIsDebug = b
+            mLogFacade = LoggerFacade(b)
         }
 
         /**
@@ -81,7 +97,7 @@ class HubLog {
     }
 
 
-    class LoggerFacade internal constructor(mIsDebug: Boolean) {
+    class LoggerFacade internal constructor(isDebug: Boolean) {
 
         private val providedTag = ThreadLocal<String>()
 
@@ -100,7 +116,7 @@ class HubLog {
 
         init {
 
-            if (mIsDebug){
+            if (isDebug){
                 Timber.plant(Timber.DebugTree())
             }else{
                 Timber.plant(CrashlyticsLogTree())

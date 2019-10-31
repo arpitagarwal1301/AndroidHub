@@ -10,14 +10,16 @@ import com.agarwal.arpit.androidhub.R
 import com.agarwal.arpit.common.logging.HubLog
 import kotlinx.android.synthetic.main.fragment_a1.*
 
+private const val TAG = "FragmentA1"
+
 class FragmentA1 : Fragment(){
+
 
     private var mFragmentCommunication : FragmentCommunication? = null
 
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        HubLog.v("Fragment :onAttach")
         mFragmentCommunication = context as FragmentCommunication;// interfaces are initialised in onAttach of fragment
     }
 
