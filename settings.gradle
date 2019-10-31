@@ -1,2 +1,2 @@
-include ':app', ':dynamicfeature', ':common', ':geolocation'
+include ':app', ':dynamicfeature', ':common'
 

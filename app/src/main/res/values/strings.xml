@@ -7,4 +7,5 @@
     <string name="title_dynamicfeature">FlashLight</string>
     <string name="module_feature_flash_light">dynamicfeature</string>
     <string name="module_feature_detection">FlashLight</string>
+    <string name="title_activity_maps">Map</string>
 </resources>

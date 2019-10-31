@@ -9,7 +9,7 @@ keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 android {
 
 
-    defaultConfig{
+    defaultConfig {
         applicationId Names.applicationId
         multiDexEnabled true
     }
@@ -44,7 +44,6 @@ android {
     }
 
 
-
     dynamicFeatures = [Modules.dynamicfeature]
 
 }
@@ -53,7 +52,6 @@ android {
 dependencies {
 
     api project(Modules.common)
-    api project(Modules.geolocation)
 
     //Android
     api AndroidLibraries.appCompat
@@ -67,8 +65,10 @@ dependencies {
     implementation Libraries.glide
     implementation Libraries.firebase_core
     implementation Libraries.crashlytics
+    implementation 'com.google.android.gms:play-services-maps:16.1.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
-
-
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'

@@ -1,4 +1,4 @@
-package com.agarwal.arpit.geolocation
+package com.agarwal.arpit.androidhub.googlemaps
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

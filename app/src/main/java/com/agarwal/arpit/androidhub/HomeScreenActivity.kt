@@ -6,7 +6,6 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.agarwal.arpit.androidhub.databinding.ActivityHomeScreenBinding
 import com.agarwal.arpit.androidhub.entities.FeatureEntity
 import com.agarwal.arpit.common.utils.getStringWrapper
@@ -21,8 +20,10 @@ import java.util.*
 
 private const val packageNameApp = "com.agarwal.arpit.androidhub"
 private const val packageNameFlashLight = "com.agarwal.arpit.flashlight"
+private const val packageNameMapsActivity = "com.agarwal.arpit.geolocation"
 private const val activityA = "$packageNameApp.lifecycle.ActivityA"
 private const val flashActivity = "$packageNameFlashLight.FlashActivity"
+private const val mapsActivity = "$packageNameMapsActivity.MapsActivity"
 
 class HomeScreenActivity : AppCompatActivity() {
 
@@ -118,12 +119,13 @@ class HomeScreenActivity : AppCompatActivity() {
                 when (position) {
                     0 -> launchActivity(activityA)
                     1 -> loadAndLaunchModule(moduleFlashLight)
+                    2 -> launchActivity(mapsActivity)
                 }
             }
         })
 
 
-        recycler_view.layoutManager = GridLayoutManager(this, 2) as RecyclerView.LayoutManager?
+        recycler_view.layoutManager = GridLayoutManager(this, 3)
         recycler_view.setHasFixedSize(false)
         recycler_view.adapter = mAdapter
 
@@ -134,6 +136,7 @@ class HomeScreenActivity : AppCompatActivity() {
         mAdapterList.clear()
         mAdapterList.add(FeatureEntity("Lifecycle", "Demonstrates activity & fragment lifecycle"))
         mAdapterList.add(FeatureEntity("Flash", "Pub Flash Light"))
+        mAdapterList.add(FeatureEntity("Maps", "Google Maps"))
         mAdapter.notifyDataSetChanged()
     }
 
