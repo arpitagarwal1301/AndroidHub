@@ -22,4 +22,11 @@ Structure :
 Following and project naming conventions and guidelines 
 https://github.com/ribot/android-guidelines/blob/master/project_and_code_guidelines.md
 
+
+Google Maps:
+1. Integrations for live,dev builds
+2. Support different terrains .
+3. Add markers,point of interests and their info.
+4. Map styling
+
 Known issues : Some api's might not work for UAT ( eg. google maps api)
