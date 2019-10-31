@@ -1,10 +1,14 @@
 package com.agarwal.arpit.androidhub.googlemaps
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.content.res.Resources
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.agarwal.arpit.androidhub.R
 import com.agarwal.arpit.common.logging.HubLog
 import com.agarwal.arpit.common.utils.getStringWrapper
@@ -20,7 +24,8 @@ import java.util.*
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private val TAG = MapsActivity::class.java.simpleName
-    private lateinit var _map: GoogleMap
+    private val REQUEST_LOCATION_PERMISSION = 1
+    private lateinit var mMap: GoogleMap
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,19 +46,20 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
      * installed Google Play services and returned to the app.
      */
     override fun onMapReady(googleMap: GoogleMap) {
-        _map = googleMap
+        mMap = googleMap
 
         // Add a marker in Sydney and move the camera
         val sydney = LatLng(-34.0, 151.0)
         val bangalore = LatLng(12.922312, 77.637683)
         val zoomLevel = 15f
 
-        _map.addMarker(MarkerOptions().position(bangalore).title("Marker in Bangalore"))
-        _map.moveCamera(CameraUpdateFactory.newLatLngZoom(bangalore, zoomLevel))
+        mMap.addMarker(MarkerOptions().position(bangalore).title("Marker in Bangalore"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(bangalore, zoomLevel))
 
-        setMapLongClick(_map)
-        setPoiClick(_map)
-        setMapStyle(_map)
+        setMapLongClick(mMap)
+        setPoiClick(mMap)
+        setMapStyle(mMap)
+        enableMyLocation(mMap);
 
     }
 
@@ -120,22 +126,55 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
         return when (item.itemId) {
             R.id.normal_map -> {
-                _map.mapType = GoogleMap.MAP_TYPE_NORMAL
+                mMap.mapType = GoogleMap.MAP_TYPE_NORMAL
                 true
             }
             R.id.hybrid_map -> {
-                _map.mapType = GoogleMap.MAP_TYPE_HYBRID
+                mMap.mapType = GoogleMap.MAP_TYPE_HYBRID
                 true
             }
             R.id.satellite_map -> {
-                _map.mapType = GoogleMap.MAP_TYPE_SATELLITE
+                mMap.mapType = GoogleMap.MAP_TYPE_SATELLITE
                 true
             }
             R.id.terrain_map -> {
-                _map.mapType = GoogleMap.MAP_TYPE_TERRAIN
+                mMap.mapType = GoogleMap.MAP_TYPE_TERRAIN
                 true
             }
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+
+    private fun isPermissionGranted(): Boolean {
+        return ContextCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION) === PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun enableMyLocation(map: GoogleMap) {
+        if (isPermissionGranted()) {
+            map.setMyLocationEnabled(true)
+        } else {
+            ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf<String>(Manifest.permission.ACCESS_FINE_LOCATION),
+                    REQUEST_LOCATION_PERMISSION
+            )
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+            requestCode: Int,
+            permissions: Array<String>,
+            grantResults: IntArray) {
+
+
+        TODO("In case : Never selected show alert dialog and open setting page'")
+        if (requestCode == REQUEST_LOCATION_PERMISSION) {
+            if (grantResults.size > 0 && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                enableMyLocation(mMap)
+            }
         }
     }
 }

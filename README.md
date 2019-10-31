@@ -27,6 +27,7 @@ Google Maps:
 1. Integrations for live,dev builds
 2. Support different terrains .
 3. Add markers,point of interests and their info.
-4. Map styling
+4. Map styling (https://mapstyle.withgoogle.com/)
+5. Open setting page - Extension function
 
 Known issues : Some api's might not work for UAT ( eg. google maps api)
