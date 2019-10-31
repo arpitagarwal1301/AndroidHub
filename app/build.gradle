@@ -14,8 +14,12 @@ android {
         multiDexEnabled true
     }
     productFlavors {
+        live{
+            manifestPlaceholders = [ google_maps_key:GOOGLE_MAP_LIVE_API_KEY]
+        }
         dev {
             applicationIdSuffix = '.dev'
+            manifestPlaceholders = [ google_maps_key:GOOGLE_MAP_DEV_API_KEY]
         }
         uat {
             applicationIdSuffix = '.uat'

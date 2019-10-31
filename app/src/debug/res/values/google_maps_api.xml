@@ -20,5 +20,11 @@
     Once you have your key (it starts with "AIza"), replace the "google_maps_key"
     string in this file.
     -->
-    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyA2v0X0UV0kyBMZ9oR5gN-3bUSp-pxr4yc</string>
+<!--    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyA2v0X0UV0kyBMZ9oR5gN-3bUSp-pxr4yc</string>-->
+<!--    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyCUatIpEaP8_CpTb46wsVe8m2-WxxnS4BA</string>-->
+<!--    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">${google_map_key}</string>-->
+
+
+<!--    The key is implemented in gradle-->
+
 </resources>

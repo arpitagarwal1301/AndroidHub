@@ -22,3 +22,4 @@ Structure :
 Following and project naming conventions and guidelines 
 https://github.com/ribot/android-guidelines/blob/master/project_and_code_guidelines.md
 
+Known issues : Some api's might not work for UAT ( eg. google maps api)
