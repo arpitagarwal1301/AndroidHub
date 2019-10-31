@@ -15,11 +15,11 @@ android {
     }
     productFlavors {
         live{
-            manifestPlaceholders = [ google_maps_key:GOOGLE_MAP_LIVE_API_KEY]
+            manifestPlaceholders = [ google_maps_key:GOOGLE_MAP_LIVE_API_KEY_DEBUG]
         }
         dev {
             applicationIdSuffix = '.dev'
-            manifestPlaceholders = [ google_maps_key:GOOGLE_MAP_DEV_API_KEY]
+            manifestPlaceholders = [ google_maps_key:GOOGLE_MAP_DEV_API_KEY_DEBUG]
         }
         uat {
             applicationIdSuffix = '.uat'
@@ -36,6 +36,8 @@ android {
             // Stops the reverse engineering of your application//
 //            useProguard true //default true -> code obfuscater// instead use r8 enable true , false in gradle.properties
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [google_maps_key:GOOGLE_MAP_LIVE_API_KEY_RELEASE]
+            applicationIdSuffix = ''
             minifyEnabled = true
         }
 
