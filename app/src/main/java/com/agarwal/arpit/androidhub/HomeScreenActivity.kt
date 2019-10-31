@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.agarwal.arpit.androidhub.databinding.ActivityHomeScreenBinding
 import com.agarwal.arpit.androidhub.entities.FeatureEntity
 import com.agarwal.arpit.common.utils.getStringWrapper
@@ -20,10 +21,9 @@ import java.util.*
 
 private const val packageNameApp = "com.agarwal.arpit.androidhub"
 private const val packageNameFlashLight = "com.agarwal.arpit.flashlight"
-private const val packageNameMapsActivity = "com.agarwal.arpit.geolocation"
 private const val activityA = "$packageNameApp.lifecycle.ActivityA"
+private const val mapsActivity = "$packageNameApp.googlemaps.MapsActivity"
 private const val flashActivity = "$packageNameFlashLight.FlashActivity"
-private const val mapsActivity = "$packageNameMapsActivity.MapsActivity"
 
 class HomeScreenActivity : AppCompatActivity() {
 
@@ -125,8 +125,8 @@ class HomeScreenActivity : AppCompatActivity() {
         })
 
 
-        recycler_view.layoutManager = GridLayoutManager(this, 3)
-        recycler_view.setHasFixedSize(false)
+        recycler_view.layoutManager = GridLayoutManager(this, 2) as RecyclerView.LayoutManager?
+        recycler_view.setHasFixedSize(true)
         recycler_view.adapter = mAdapter
 
     }
@@ -197,7 +197,7 @@ class HomeScreenActivity : AppCompatActivity() {
 
     /** Launch an activity by its class name. */
     private fun launchActivity(className: String) {
-        Intent().setClassName(packageNameApp, className)
+        Intent().setClassName(packageName, className)
                 .also {
                     startActivity(it)
                 }

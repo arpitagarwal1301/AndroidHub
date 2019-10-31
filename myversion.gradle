@@ -8,7 +8,6 @@ def Modules = [:]
 Modules.app = ":app"
 Modules.common = ":common"
 Modules.dynamicfeature = ":dynamicfeature"
-Modules.geolocation = ":geolocation"
 ext.Modules = Modules
 
 def Versions = [:]
