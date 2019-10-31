@@ -31,3 +31,5 @@ Google Maps:
 5. Open setting page - Extension function
 
 Known issues : Some api's might not work for UAT ( eg. google maps api)
+
+Todo : Currently map won't work in release build . Generate google map api key for release build
