@@ -21,9 +21,11 @@ import java.util.*
 
 private const val packageNameApp = "com.agarwal.arpit.androidhub"
 private const val packageNameFlashLight = "com.agarwal.arpit.flashlight"
+private const val packageNameFirebase = "com.agarwal.arpit.firebaseml"
 private const val activityA = "$packageNameApp.lifecycle.ActivityA"
 private const val mapsActivity = "$packageNameApp.googlemaps.MapsActivity"
 private const val flashActivity = "$packageNameFlashLight.FlashActivity"
+private const val firebaseActivity = "$packageNameApp.firebaseml.FirebaseMLActivity"
 
 class HomeScreenActivity : AppCompatActivity() {
 
@@ -120,6 +122,7 @@ class HomeScreenActivity : AppCompatActivity() {
                     0 -> launchActivity(activityA)
                     1 -> loadAndLaunchModule(moduleFlashLight)
                     2 -> launchActivity(mapsActivity)
+                    3 -> showToast("coming soon...")
                 }
             }
         })
@@ -137,6 +140,7 @@ class HomeScreenActivity : AppCompatActivity() {
         mAdapterList.add(FeatureEntity("Lifecycle", "Demonstrates activity & fragment lifecycle"))
         mAdapterList.add(FeatureEntity("Flash", "Pub Flash Light"))
         mAdapterList.add(FeatureEntity("Maps", "Google Maps"))
+        mAdapterList.add(FeatureEntity("FirebaseML", "Face,Object,Text Detections"))
         mAdapter.notifyDataSetChanged()
     }
 

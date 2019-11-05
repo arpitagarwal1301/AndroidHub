@@ -8,6 +8,10 @@
          location permissions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:name=".AppController"
@@ -55,6 +59,15 @@
         <activity
             android:name=".googlemaps.MapsActivity"
             android:label="@string/title_activity_maps"></activity>
+
+        <meta-data
+            android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+            android:value="face,ocr,ica" />
+        <activity
+            android:name=".firebaseml.FirebaseMLActivity"
+            android:label="@string/title_activity_firebase"></activity>
+
+
     </application>
 
 </manifest>

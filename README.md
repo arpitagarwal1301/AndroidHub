@@ -30,4 +30,8 @@ Google Maps:
 4. Map styling (https://mapstyle.withgoogle.com/)
 5. Open setting page - Extension function
 
+Firebase ML
+1. Facedetection
+2. Business Card Detection ( Object detecion + Text detection)
+
 Known issues : Some api's might not work for UAT ( eg. google maps api)

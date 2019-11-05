@@ -26,6 +26,11 @@ Versions.kotlin = "1.3.50"
 Versions.playcore = '1.6.4'
 Versions.glide = '4.10.0'
 Versions.coroutines = "1.1.1"
+Versions.maps = '17.0.0'
+Versions.firebase_ml_vision = '24.0.0'
+Versions.firebase_ml_vision_face_model = '19.0.0'
+Versions.firebase_ml_vision_face_model_object_detection = '19.0.2'
+Versions.camerax_version = "1.0.0-alpha05"
 ext.Versions = Versions
 
 def AndroidLibraries = [:]
@@ -35,6 +40,9 @@ AndroidLibraries.coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
 AndroidLibraries.recyclerview = "androidx.recyclerview:recyclerview:${Versions.recyclerview}"
 AndroidLibraries.material = "com.google.android.material:material:${Versions.material}"
 AndroidLibraries.play_core = "com.google.android.play:core:${Versions.playcore}"
+AndroidLibraries.maps = "com.google.android.gms:play-services-maps:${Versions.maps}"
+AndroidLibraries.camera_core = "androidx.camera:camera-core:${Versions.camerax_version}"
+AndroidLibraries.camera_camera2 = "androidx.camera:camera-camera2:${Versions.camerax_version}"
 ext.AndroidLibraries = AndroidLibraries
 
 def KotlinLibraries = [:]
@@ -47,6 +55,9 @@ Libraries.glide = "com.github.bumptech.glide:glide:${Versions.glide}"
 Libraries.timber = "com.jakewharton.timber:timber:${Versions.timber}"
 Libraries.firebase_core = "com.google.firebase:firebase-core:${Versions.firebase}"
 Libraries.crashlytics = "com.crashlytics.sdk.android:crashlytics:${Versions.crashlytics}"
+Libraries.firebase_ml_vision = "com.google.firebase:firebase-ml-vision:${Versions.firebase_ml_vision}"
+Libraries.firebase_ml_vision_face_model = "com.google.firebase:firebase-ml-vision-face-model:${Versions.firebase_ml_vision_face_model}"
+Libraries.firebase_ml_vision_face_model_object_detection = "com.google.firebase:firebase-ml-vision-object-detection-model:${Versions.firebase_ml_vision_face_model_object_detection}"
 ext.Libraries = Libraries
 
 def SdkVersions = [:]

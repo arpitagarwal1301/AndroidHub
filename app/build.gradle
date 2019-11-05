@@ -66,12 +66,20 @@ dependencies {
     implementation AndroidLibraries.material
     implementation AndroidLibraries.play_core
     implementation AndroidLibraries.coreKtx
+    implementation AndroidLibraries.maps
+    implementation AndroidLibraries.camera_core
+    implementation AndroidLibraries.camera_camera2
+
     //Third party
     implementation Libraries.timber
     implementation Libraries.glide
     implementation Libraries.firebase_core
     implementation Libraries.crashlytics
-    implementation 'com.google.android.gms:play-services-maps:16.1.0'
+    implementation Libraries.firebase_ml_vision
+    implementation Libraries.firebase_ml_vision_face_model
+    implementation Libraries.firebase_ml_vision_face_model_object_detection
+
+
 }
 
 apply plugin: 'com.google.gms.google-services'

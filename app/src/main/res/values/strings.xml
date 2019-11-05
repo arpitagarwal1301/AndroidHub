@@ -8,6 +8,7 @@
     <string name="module_feature_flash_light">dynamicfeature</string>
     <string name="module_feature_detection">FlashLight</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_firebase">FirebaseML</string>
 
 
     <string name="normal_map">Normal Map</string>
