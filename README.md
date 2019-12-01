@@ -34,4 +34,4 @@ Firebase ML
 1. Facedetection
 2. Business Card Detection ( Object detecion + Text detection)
 
-Known issues : Some api's might not work for UAT ( eg. google maps api)
+Known issues : Firebase ML module crashing
